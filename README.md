@@ -1,2 +1,2 @@
-# KiRiSynth
-KiRist's DIY VSTi (Synth)
+# KiRiPlugIn
+KiRist's DIY PlugIn
