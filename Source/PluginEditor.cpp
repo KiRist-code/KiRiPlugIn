@@ -15,8 +15,9 @@ KiRiPlugInAudioProcessorEditor::KiRiPlugInAudioProcessorEditor (KiRiPlugInAudioP
 {
     mGainSlider.setSliderStyle (Slider::SliderStyle::LinearVertical);
     mGainSlider.setTextBoxStyle(Slider::TextBoxBelow, true, 50, 20);
-    mGainSlider.setRange(0.0f, 1.0f, 0.01f);
-    mGainSlider.setValue(0.5f);
+    mGainSlider.setRange(-60.0f, 0.0f, 0.01f);
+    mGainSlider.setValue(-20.0f);
+    mGainSlider.addListener(this);
     addAndMakeVisible(mGainSlider);
      
     setSize (200, 300);
@@ -37,4 +38,10 @@ void KiRiPlugInAudioProcessorEditor::paint (juce::Graphics& g)
 void KiRiPlugInAudioProcessorEditor::resized()
 {
     mGainSlider.setBounds(getWidth() / 2 -50 , getHeight() /2 - 75, 100, 150);
+}
+
+void KiRiPlugInAudioProcessor::sliderValueChanged (sliderValueChanged){
+  if (slider == &mGainSlider) {
+    processor.mGain = mGainSlider.getValue();
+  }
 }
