@@ -14,7 +14,8 @@
 //==============================================================================
 /**
 */
-class KiRiPlugInAudioProcessorEditor  : public juce::AudioProcessorEditor{
+class KiRiPlugInAudioProcessorEditor  : public juce::AudioProcessorEditor, public Slider::Listener
+{
 public:
     KiRiPlugInAudioProcessorEditor (KiRiPlugInAudioProcessor&);
     ~KiRiPlugInAudioProcessorEditor() override;
@@ -22,6 +23,8 @@ public:
     //==============================================================================
     void paint (Graphics&) override;
     void resized() override;
+
+    void sliderValueChanged (Slider* slider) overrride;
 
 private:
     slider mGainSlider;
